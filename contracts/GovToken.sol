@@ -18,8 +18,8 @@ contract GovToken is
     ERC20VotesUpgradeable
 {
     /*----------------- constants -----------------*/
-    string private constant NAME = "BSC Governance Token";
-    string private constant SYMBOL = "govBNB";
+    string private constant NAME = "PIndex Governance Token";
+    string private constant SYMBOL = "govPETH";
 
     /*----------------- errors -----------------*/
     // @notice signature: 0x8cd22d19
