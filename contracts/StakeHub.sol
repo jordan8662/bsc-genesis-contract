@@ -267,7 +267,7 @@ contract StakeHub is SystemV2, Initializable, Protectable {
      */
     function initialize() external initializer onlyCoinbase onlyZeroGasPrice {
         transferGasLimit = 5000;
-        minSelfDelegationBNB = 2_000 ether;
+        minSelfDelegationBNB = 1_000 ether;//adjust 2_000 -> 1_000
         minDelegationBNBChange = 1 ether;
         maxElectedValidators = 45;
         unbondPeriod = 7 days;
@@ -763,7 +763,8 @@ contract StakeHub is SystemV2, Initializable, Protectable {
         } else if (key.compareStrings("minSelfDelegationBNB")) {
             if (value.length != 32) revert InvalidValue(key, value);
             uint256 newMinSelfDelegationBNB = value.bytesToUint256(32);
-            if (newMinSelfDelegationBNB < 1000 ether || newMinSelfDelegationBNB > 100_000 ether) {
+            //adjust 1000 -> 500
+            if (newMinSelfDelegationBNB < 500 ether || newMinSelfDelegationBNB > 100_000 ether) {
                 revert InvalidValue(key, value);
             }
             minSelfDelegationBNB = newMinSelfDelegationBNB;
