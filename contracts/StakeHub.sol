@@ -353,6 +353,8 @@ contract StakeHub is SystemV2, Initializable, Protectable {
         if (_monikerSet[monikerHash]) revert DuplicateMoniker();
 
         uint256 delegation = msg.value - LOCK_AMOUNT; // create validator need to lock 1 BNB
+
+        require(delegation < minSelfDelegationBNB, string(abi.encodePacked("Not enough balance ", uint2str(minSelfDelegationBNB))));
         if (delegation < minSelfDelegationBNB) revert SelfDelegationNotEnough();
 
         if (consensusAddress == address(0)) revert InvalidConsensusAddress();
@@ -1294,5 +1296,27 @@ contract StakeHub is SystemV2, Initializable, Protectable {
         if (maxNodeIDs == 0) {
             maxNodeIDs = INIT_MAX_NUMBER_NODE_ID;
         }
+    }
+
+    function uint2str(uint256 _i) internal pure returns (string memory) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint256 j = _i;
+        uint256 len;
+        while (j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint256 k = len;
+        while (_i != 0) {
+            k = k - 1;
+            uint8 temp = (48 + uint8(_i - _i / 10 * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
     }
 }
