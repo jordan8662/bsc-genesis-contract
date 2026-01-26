@@ -98,7 +98,7 @@ contract StakeHub is SystemV2, Initializable, Protectable {
     uint256 public transferGasLimit;
 
     // stake params
-    uint256 public minSelfDelegationBNB;
+    uint256 private minSelfDelegationBNB;
     uint256 public minDelegationBNBChange;
     uint256 public maxElectedValidators;
     uint256 public unbondPeriod;
@@ -149,8 +149,6 @@ contract StakeHub is SystemV2, Initializable, Protectable {
     // mapping from a validator's operator address to an array of their registered NodeIDs,
     // where each NodeID is stored as a fixed 32-byte value.
     mapping(address => bytes32[]) private validatorNodeIDs;
-
-    uint256 public testVal;
 
     /*----------------- structs and events -----------------*/
     struct StakeMigrationPackage {
@@ -270,7 +268,6 @@ contract StakeHub is SystemV2, Initializable, Protectable {
     function initialize() external initializer onlyCoinbase onlyZeroGasPrice {
         transferGasLimit = 5000;
         minSelfDelegationBNB = 1_000 ether;//adjust 2_000 -> 1_000
-        testVal = 1;
         minDelegationBNBChange = 1 ether;
         maxElectedValidators = 45;
         unbondPeriod = 7 days;
@@ -772,7 +769,6 @@ contract StakeHub is SystemV2, Initializable, Protectable {
                 revert InvalidValue(key, value);
             }
             minSelfDelegationBNB = newMinSelfDelegationBNB;
-            testVal = testVal + 1;
         } else if (key.compareStrings("minDelegationBNBChange")) {
             if (value.length != 32) revert InvalidValue(key, value);
             uint256 newMinDelegationBNBChange = value.bytesToUint256(32);
