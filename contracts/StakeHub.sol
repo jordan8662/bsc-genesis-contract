@@ -355,7 +355,7 @@ contract StakeHub is SystemV2, Initializable, Protectable {
         uint256 delegation = msg.value - LOCK_AMOUNT; // create validator need to lock 1 BNB
 
         require(delegation < minSelfDelegationBNB, string(abi.encodePacked("Not enough balance ", uint2str(minSelfDelegationBNB))));
-        if (delegation < minSelfDelegationBNB) revert SelfDelegationNotEnough();
+        //if (delegation < minSelfDelegationBNB) revert SelfDelegationNotEnough();
 
         if (consensusAddress == address(0)) revert InvalidConsensusAddress();
         if (
