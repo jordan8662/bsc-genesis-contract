@@ -19,7 +19,7 @@ contract GovToken is
 {
     /*----------------- constants -----------------*/
     string private constant NAME = "PIndex Governance Token";
-    string private constant SYMBOL = "govPETH";
+    string private constant SYMBOL = "govPIN";
 
     /*----------------- errors -----------------*/
     // @notice signature: 0x8cd22d19
