@@ -267,7 +267,7 @@ contract StakeHub is SystemV2, Initializable, Protectable {
      */
     function initialize() external initializer onlyCoinbase onlyZeroGasPrice {
         transferGasLimit = 5000;
-        minSelfDelegationBNB = 2_000 ether;//adjust 2_000 -> 1_000
+        minSelfDelegationBNB = 1_000 ether;//adjust 2_000 -> 1_000
         minDelegationBNBChange = 1 ether;
         maxElectedValidators = 45;
         unbondPeriod = 7 days;
