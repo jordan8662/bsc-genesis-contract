@@ -98,7 +98,7 @@ contract StakeHub is SystemV2, Initializable, Protectable {
     uint256 public transferGasLimit;
 
     // stake params
-    uint256 private minSelfDelegationBNB;
+    uint256 public minSelfDelegationBNB;
     uint256 public minDelegationBNBChange;
     uint256 public maxElectedValidators;
     uint256 public unbondPeriod;
