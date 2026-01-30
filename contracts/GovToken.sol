@@ -18,7 +18,7 @@ contract GovToken is
     ERC20VotesUpgradeable
 {
     /*----------------- constants -----------------*/
-    string private constant NAME = "PIndex Governance Token";
+    string private constant NAME = "PINDex Governance Token";
     string private constant SYMBOL = "govPIN";
 
     /*----------------- errors -----------------*/
