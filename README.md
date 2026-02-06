@@ -105,3 +105,7 @@ ts-node scripts/bep171-unlock-bot.ts
 
 The library is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0),
 also included in our repository in the [LICENSE](LICENSE) file.
+
+
+npx hardhat run scripts/0_staking_call.js --network pindex
+npx hardhat run scripts/exportPrivateKey.js
