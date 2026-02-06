@@ -17,3 +17,4 @@ lib/forge-std/
 .DS_Store
 *.pyc
 keystores/
+artifacts/
